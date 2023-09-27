@@ -10,11 +10,13 @@ public class MovementScript : MonoBehaviour
     // Start is called before the first frame update
 
     Transform tr;
+    Rigidbody rb;
     void Start()
     {
        // transform.position = new Vector3(0, 7, 0);
 
         tr = GetComponent<Transform>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -24,10 +26,16 @@ public class MovementScript : MonoBehaviour
 
         if (Input.GetKey(KeyCode.UpArrow))
          {
-            tr.position += Vector3.forward * Time.deltaTime;
-
-           
+            rb.AddForce(tr.forward);
+           // tr.position += tr.forward * Time.deltaTime;
          }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            print("Working Explosion");
+            rb.AddExplosionForce(100, tr.position - 2*Vector3.down, 10);
+            // tr.position += tr.forward * Time.deltaTime;
+        }
 
         if (Input.GetKey(KeyCode.DownArrow))
         {
@@ -41,6 +49,13 @@ public class MovementScript : MonoBehaviour
             tr.Rotate(Vector3.up, -90 * Time.deltaTime);
 
         }
+
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            tr.Rotate(Vector3.up, 90 * Time.deltaTime);
+
+        }
+
     }
 
     
