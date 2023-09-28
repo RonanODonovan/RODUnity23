@@ -11,12 +11,14 @@ public class MovementScript : MonoBehaviour
 
     Transform tr;
     Rigidbody rb;
+    Animator ani;
     void Start()
     {
        // transform.position = new Vector3(0, 7, 0);
 
         tr = GetComponent<Transform>();
         rb = GetComponent<Rigidbody>();
+        ani = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -33,7 +35,7 @@ public class MovementScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             print("Working Explosion");
-            rb.AddExplosionForce(100, tr.position - 2*Vector3.down, 10);
+            rb.AddExplosionForce(100, tr.position - 2*Vector3.down, 5);
             // tr.position += tr.forward * Time.deltaTime;
         }
 
