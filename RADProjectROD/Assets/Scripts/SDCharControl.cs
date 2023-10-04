@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SDCharControl : MonoBehaviour
 {
+    public GameObject snowballCloneTemplate;
     Transform tr;
     Rigidbody rb;
     float currentSpeed, walkingSpeed = 2, runningSpeed = 4;
@@ -48,6 +49,15 @@ public class SDCharControl : MonoBehaviour
         {
             tr.Rotate(Vector3.up, turningSpeed * Time.deltaTime);
 
+        }
+
+        if (Input.GetMouseButton(0))
+        {
+           GameObject newGO = Instantiate(snowballCloneTemplate);
+
+           SnowballScript mySnowball = newGO.GetComponent<SnowballScript>();
+
+            mySnowball.Throwing(this);
         }
     }
 }
