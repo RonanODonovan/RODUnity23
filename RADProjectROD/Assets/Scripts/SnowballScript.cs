@@ -7,14 +7,15 @@ public class SnowballScript : MonoBehaviour
 {
     Transform tr;
     Rigidbody rb;
-    internal int check = 5;
+    internal int check = 1;
     // Start is called before the first frame update
     void Start()
     {
         tr = GetComponent<Transform>();
         rb = GetComponent<Rigidbody>();
-        rb.velocity = new Vector3(0, 2, -8);
+   
     }
+
 
     // Update is called once per frame
     void Update()
@@ -22,9 +23,22 @@ public class SnowballScript : MonoBehaviour
         
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        print("Hit");
+
+        OnHitScript thingHit = collision.gameObject.GetComponent<OnHitScript>();
+        if (thingHit != null)
+        {
+            thingHit.OnHit();
+        }
+    }
+
     internal void Throwing(SDCharControl sDCharControl)
     {
         transform.position = sDCharControl.transform.position + 2* Vector3.up + sDCharControl.transform.forward;
-        rb.velocity = 10 * (2 * Vector3.up + sDCharControl.transform.forward);
+        rb = GetComponent<Rigidbody>();
+        rb.velocity = 2 * (2 * Vector3.up + sDCharControl.transform.forward);
+
     }
 }
