@@ -25,8 +25,6 @@ public class SnowballScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        print("Hit");
-
         OnHitScript thingHit = collision.gameObject.GetComponent<OnHitScript>();
         if (thingHit != null)
         {
@@ -38,7 +36,7 @@ public class SnowballScript : MonoBehaviour
     {
         transform.position = sDCharControl.transform.position + 2* Vector3.up + sDCharControl.transform.forward;
         rb = GetComponent<Rigidbody>();
-        rb.velocity = 2 * (2 * Vector3.up + sDCharControl.transform.forward);
+        rb.velocity = 1 * (1 * Vector3.up + sDCharControl.transform.forward);
 
     }
 }
