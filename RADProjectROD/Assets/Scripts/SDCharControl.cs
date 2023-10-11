@@ -25,27 +25,27 @@ public class SDCharControl : MonoBehaviour
     {
         myanimator.SetBool("isRun", false);
 
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.W))
         {
            // rb.AddForce(tr.forward);
              tr.position += currentSpeed * tr.forward * Time.deltaTime;
             myanimator.SetBool("isRun", true);
         }
 
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.S))
         {
             myanimator.SetBool("isRun", true);
             tr.position -= currentSpeed * transform.forward * Time.deltaTime;
 
         }
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.A))
         {
             tr.Rotate(Vector3.up, -turningSpeed * Time.deltaTime);
 
         }
 
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.D))
         {
             tr.Rotate(Vector3.up, turningSpeed * Time.deltaTime);
 
